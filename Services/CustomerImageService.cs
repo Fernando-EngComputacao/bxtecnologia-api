@@ -1,7 +1,10 @@
+using System.Net;
 using Amazon.S3;
 using Amazon.S3.Model;
-using BXTecnologia.API.Client;
+using BXTecnologia.API.Config;
 using BXTecnologia.API.Services.Interfaces;
+using BXTecnologia.API.Services.Validators;
+using FluentValidation;
 using Microsoft.Extensions.Options;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.Advanced;
@@ -13,17 +16,35 @@ namespace BXTecnologia.API.Services;
 public class CustomerImageService : ICustomerImageService
 {
     private readonly IAmazonS3 _s3;
-    private readonly Email _emailConfig;
+    private readonly EmailSettings _emailConfig;
+    private readonly ICustomerService _customer;
+    private readonly IEmailService _emailService;
+    private readonly CustomerImageValidator _imageValidator;
+    private readonly CustomerImageUpdateValidator _imageUpdateValidator;
+    private readonly CustomerImageGetValidator _imageGetValidator;
+    private readonly CustomerImageDeleteValidator _imageDeleteValidator;
     private const string BucketName = "bxtecnologiabucket";
 
-    public CustomerImageService(IAmazonS3 s3, IOptions<Email> emailOptions)
+    public CustomerImageService(IAmazonS3 s3, IOptions<EmailSettings> settings, ICustomerService customer, IEmailService emailService)
     {
         _s3 = s3;
-        _emailConfig = emailOptions.Value;
+        _customer = customer;
+        _emailService = emailService;
+        _emailConfig = settings.Value;
+        _imageValidator = new CustomerImageValidator();
+        _imageUpdateValidator = new CustomerImageUpdateValidator();
+        _imageGetValidator = new CustomerImageGetValidator();
+        _imageDeleteValidator = new CustomerImageDeleteValidator();
     }
 
     public async Task<PutObjectResponse> UploadImageAsync(Guid id, IFormFile file)
     {
+        var validationResult = await _imageValidator.ValidateAsync(file);
+        if (!validationResult.IsValid)
+        {
+            throw new ValidationException(validationResult.Errors);
+        }
+
         var timestamp = DateTime.UtcNow.ToString("yyyyMMddHHmmss"); // Gera tipo 20250426155300
         var extension = Path.GetExtension(file.FileName);
         
@@ -45,6 +66,12 @@ public class CustomerImageService : ICustomerImageService
 
     public async Task<PutObjectResponse> UpdateImageAsync(Guid id, string fileName, int width, int height)
     {
+        var validationResult = await _imageUpdateValidator.ValidateAsync((id, fileName, width, height));
+        if (!validationResult.IsValid)
+        {
+            throw new ValidationException(validationResult.Errors);
+        }
+
         var file = await GetImageAsync(id, fileName);
         if (file == null)
         {
@@ -89,6 +116,15 @@ public class CustomerImageService : ICustomerImageService
 
     public async Task<GetObjectResponse?> GetImageAsync(Guid id, string nameImage)
     {
+        var validationResult = await _imageGetValidator.ValidateAsync((id, nameImage));
+        if (!validationResult.IsValid)
+        {
+            throw new ValidationException(validationResult.Errors);
+        }
+
+        var customer = _customer.GetAsync(id).Result;
+        
+
         try
         {
             var getObjectRequest = new GetObjectRequest
@@ -98,7 +134,11 @@ public class CustomerImageService : ICustomerImageService
             };
         
             var response = await _s3.GetObjectAsync(getObjectRequest);
-            
+
+            if (response.HttpStatusCode == HttpStatusCode.OK)
+            {
+                _emailService.SendEmailAsync(customer.Email, "Teste Email", "Teste");
+            }
             return response;
         }
         catch (AmazonS3Exception ex) when (ex.Message.Contains("The specified key does not exist"))
@@ -117,7 +157,7 @@ public class CustomerImageService : ICustomerImageService
 
         var listResponse = await _s3.ListObjectsV2Async(listRequest);
 
-        var responses = new List<GetObjectResponse>();
+        var responses = new List<GetObjectResponse?>();
 
         foreach (var s3Object in listResponse.S3Objects)
         {
@@ -142,6 +182,12 @@ public class CustomerImageService : ICustomerImageService
 
     public async Task<DeleteObjectResponse> DeleteImageAsync(Guid id)
     {
+        var validationResult = await _imageDeleteValidator.ValidateAsync(id);
+        if (!validationResult.IsValid)
+        {
+            throw new ValidationException(validationResult.Errors);
+        }
+
         var deleteObjectRequest = new DeleteObjectRequest
         {
             BucketName = BucketName,

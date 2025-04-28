@@ -1,4 +1,7 @@
+using BXTecnologia.API.Config;
 using BXTecnologia.API.Services.Interfaces;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
 
 namespace BXTecnologia.API.Services;
 
@@ -13,25 +16,18 @@ using System;
 
 public class EmailService : IEmailService
 {
-    private readonly string _clientId;
-    private readonly string _clientSecret;
-    private readonly string _refreshToken;
-    private readonly string _fromEmail;
-    private readonly string _fromName;
+    private readonly EmailSettings _emailConfig;
 
-    public EmailService(string clientId, string clientSecret, string refreshToken, string fromEmail, string fromName)
+    public EmailService(IOptions<EmailSettings> settings)
     {
-        _clientId = clientId;
-        _clientSecret = clientSecret;
-        _refreshToken = refreshToken;
-        _fromEmail = fromEmail;
-        _fromName = fromName;
+        _emailConfig = settings.Value;
     }
 
     public async Task SendEmailAsync(string toEmail, string subject, string body)
     {
+        Console.WriteLine($"{_emailConfig.FromEmail} {_emailConfig.FromName} {_emailConfig.AppPassword}");
         var message = new MimeMessage();
-        message.From.Add(new MailboxAddress(_fromName, _fromEmail));
+        message.From.Add(new MailboxAddress(_emailConfig.FromName, _emailConfig.FromEmail));
         message.To.Add(MailboxAddress.Parse(toEmail));
         message.Subject = subject;
 
@@ -45,11 +41,8 @@ public class EmailService : IEmailService
         {
             await client.ConnectAsync("smtp.gmail.com", 587, SecureSocketOptions.StartTls);
 
-            var accessToken = await GetAccessTokenAsync();
-
-            var oauth2 = new SaslMechanismOAuth2(_fromEmail, accessToken);
-
-            await client.AuthenticateAsync(oauth2);
+            // Use app password authentication instead of OAuth2
+            await client.AuthenticateAsync(_emailConfig.FromEmail, _emailConfig.AppPassword);
             await client.SendAsync(message);
             await client.DisconnectAsync(true);
         }
@@ -60,30 +53,5 @@ public class EmailService : IEmailService
         }
     }
 
-    public async Task<string> GetAccessTokenAsync()
-    {
-        using var httpClient = new HttpClient();
 
-        var tokenEndpoint = "https://oauth2.googleapis.com/token";
-        var content = new FormUrlEncodedContent(new[]
-        {
-            new KeyValuePair<string, string>("grant_type", "refresh_token"),
-            new KeyValuePair<string, string>("client_id", _clientId),
-            new KeyValuePair<string, string>("client_secret", _clientSecret),
-            new KeyValuePair<string, string>("refresh_token", _refreshToken)
-        });
-
-        var response = await httpClient.PostAsync(tokenEndpoint, content);
-        response.EnsureSuccessStatusCode(); // lança erro automático se falhar
-
-        var responseJson = await response.Content.ReadAsStringAsync();
-        using var jsonDocument = JsonDocument.Parse(responseJson);
-
-        if (jsonDocument.RootElement.TryGetProperty("access_token", out var accessTokenElement))
-        {
-            return accessTokenElement.GetString();
-        }
-
-        throw new Exception("Falha ao obter o Access Token.");
-    }
 }

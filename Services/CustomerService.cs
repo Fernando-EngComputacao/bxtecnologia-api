@@ -1,9 +1,11 @@
 using AutoMapper;
 using BXTecnologia.API.Client;
+using BXTecnologia.API.Config;
 using BXTecnologia.API.Models.Customer;
 using BXTecnologia.API.Models.Customer.DTO;
 using BXTecnologia.API.Repositories.Interfaces;
 using BXTecnologia.API.Services.Interfaces;
+using BXTecnologia.API.Services.Validators;
 using FluentValidation;
 using FluentValidation.Results;
 using Microsoft.Extensions.Options;
@@ -13,24 +15,34 @@ namespace BXTecnologia.API.Services;
 public class CustomerService : ICustomerService
 {
     private readonly ICustomerRepository _customerRepository;
-    private readonly Email _emailConfig;
+    private readonly EmailSettings _emailConfig;
     private readonly IMapper _mapper;
+    private readonly CreateCustomerDTOValidator _createValidator;
+    private readonly UpdateCustomerDTOValidator _updateValidator;
 
     public CustomerService(
         ICustomerRepository customerRepository, 
         IMapper mapper, 
-        IOptions<Email> emailOptions)
+        IOptions<EmailSettings> settings)
     {
         _customerRepository = customerRepository;
         _mapper = mapper;
-        _emailConfig = emailOptions.Value;
+        _emailConfig = settings.Value;
+        _createValidator = new CreateCustomerDTOValidator();
+        _updateValidator = new UpdateCustomerDTOValidator();
     }
     
     public async Task<bool> CreateAsync(CreateCustomerDTO customerDTO)
     {
+        var validationResult = await _createValidator.ValidateAsync(customerDTO);
+        if (!validationResult.IsValid)
+        {
+            throw new ValidationException(validationResult.Errors);
+        }
+
         var customer = _mapper.Map<Customer>(customerDTO);
         customer.UpdatedAt = DateTime.UtcNow;
-        Console.WriteLine(customer);
+        
         var existingUser = await _customerRepository.GetAsync(customer.Id);
         if (existingUser is not null)
         {
@@ -55,6 +67,12 @@ public class CustomerService : ICustomerService
 
     public async Task<bool> UpdateAsync(UpdateCustomerDTO customerDTO, DateTime requestStarted)
     {
+        var validationResult = await _updateValidator.ValidateAsync(customerDTO);
+        if (!validationResult.IsValid)
+        {
+            throw new ValidationException(validationResult.Errors);
+        }
+
         return await _customerRepository.UpdateAsync(customerDTO, requestStarted);
     }
 
