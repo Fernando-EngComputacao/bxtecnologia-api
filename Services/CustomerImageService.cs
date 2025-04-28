@@ -71,8 +71,9 @@ public class CustomerImageService : ICustomerImageService
             _emailService.SendEmailAsync(
                 customer.Email, 
                 "Cadastro de Imagem Concluído", 
-                _emailLayout.GetConfirmationEmailTemplate(
+                _emailLayout.GetImageRegistrationTemplate(
                     customer.FullName,
+                    file.FileName,
                     $"https://localhost:7194/customers/{id}/{timestamp}{extension}/image"));
         }
         
