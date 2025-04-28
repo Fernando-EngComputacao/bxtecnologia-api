@@ -8,9 +8,10 @@ public class EmailLayout : IEmailLayout
     /// Generates a registration confirmation email template with a modern and futuristic design
     /// </summary>
     /// <param name="userName">Name of the user who registered</param>
+    /// <param name="level">Level of the user who registered</param>
     /// <param name="confirmationLink">Optional confirmation link to include in the email</param>
     /// <returns>HTML formatted email body</returns>
-    public string GetUserRegistrationEmailTemplate(string userName, string? confirmationLink = null)
+    public string GetUserRegistrationEmailTemplate(string userName, string level, string? confirmationLink = null)
     {
         string confirmationButton = string.IsNullOrEmpty(confirmationLink)
             ? string.Empty
@@ -49,14 +50,14 @@ public class EmailLayout : IEmailLayout
                             <p style=""margin-bottom: 20px; font-size: 16px; line-height: 1.6; color: #555;"">
                                 Seu cadastro na BX Tecnologia foi realizado com sucesso! Estamos muito felizes em tê-lo(a) como nosso cliente.
                             </p>
+                            <p style=""margin-bottom: 20px; font-size: 16px; line-height: 1.6; color: #555;"">
+                                Você se cadastrou como {level}.
+                            </p>    
                             <p style=""margin-bottom: 30px; font-size: 16px; line-height: 1.6; color: #555;"">
                                 Agora você tem acesso a todos os nossos serviços e recursos exclusivos. Não hesite em entrar em contato caso precise de qualquer assistência.
                             </p>
                         </td>
                     </tr>
-                    
-                    <!-- Confirmation Button (if link provided) -->
-                    {confirmationButton}
                     
                     <!-- Feature Icons -->
                     <tr>
@@ -65,19 +66,19 @@ public class EmailLayout : IEmailLayout
                                 <tr>
                                     <td align=""center"" style=""padding: 10px; width: 33%;"">
                                         <div style=""width: 60px; height: 60px; background: linear-gradient(135deg, #8E2DE2 0%, #4A00E0 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto; box-shadow: 0 5px 15px rgba(74, 0, 224, 0.3);"">
-                                            <span style=""color: white; font-size: 24px;"">🔒</span>
+                                            <span style=""color: white; font-size: 24px; margin-left: 15px; margin-top: 8px;"">🔒</span>
                                         </div>
                                         <p style=""margin-top: 10px; font-weight: 600; color: #333; font-size: 14px;"">Segurança</p>
                                     </td>
                                     <td align=""center"" style=""padding: 10px; width: 33%;"">
                                         <div style=""width: 60px; height: 60px; background: linear-gradient(135deg, #8E2DE2 0%, #4A00E0 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto; box-shadow: 0 5px 15px rgba(74, 0, 224, 0.3);"">
-                                            <span style=""color: white; font-size: 24px;"">⚡</span>
+                                            <span style=""color: white; font-size: 24px; margin-left: 15px; margin-top: 8px;"">⚡</span>
                                         </div>
                                         <p style=""margin-top: 10px; font-weight: 600; color: #333; font-size: 14px;"">Velocidade</p>
                                     </td>
                                     <td align=""center"" style=""padding: 10px; width: 33%;"">
                                         <div style=""width: 60px; height: 60px; background: linear-gradient(135deg, #8E2DE2 0%, #4A00E0 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto; box-shadow: 0 5px 15px rgba(74, 0, 224, 0.3);"">
-                                            <span style=""color: white; font-size: 24px;"">🌟</span>
+                                            <span style=""color: white; font-size: 24px; margin-left: 15px; margin-top: 8px;"">🌟</span>
                                         </div>
                                         <p style=""margin-top: 10px; font-weight: 600; color: #333; font-size: 14px;"">Inovação</p>
                                     </td>
@@ -173,7 +174,7 @@ public class EmailLayout : IEmailLayout
                                         </div>
                                     </div>
                                     <div style=""position: absolute; bottom: -10px; right: -10px; width: 30px; height: 30px; background: linear-gradient(135deg, #8E2DE2 0%, #4A00E0 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 3px 8px rgba(74, 0, 224, 0.3);"">
-                                        <span style=""color: white; font-size: 16px;"">✓</span>
+                                        <span style=""color: white; font-size: 16px; margin-left: 15px; margin-top: 8px;"">✓</span>
                                     </div>
                                 </div>
                                 <p style=""margin-top: 20px; font-weight: 600; color: #333; font-size: 16px;"">{imageText}</p>
@@ -284,19 +285,19 @@ public class EmailLayout : IEmailLayout
                                 <tr>
                                     <td align=""center"" style=""padding: 10px; width: 33%;"">
                                         <div style=""width: 60px; height: 60px; background: linear-gradient(135deg, #8E2DE2 0%, #4A00E0 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto; box-shadow: 0 5px 15px rgba(74, 0, 224, 0.3);"">
-                                            <span style=""color: white; font-size: 24px;"">🔒</span>
+                                            <span style=""color: white; font-size: 24px; margin-left: 15px; margin-top: 8px;"">🔒</span>
                                         </div>
                                         <p style=""margin-top: 10px; font-weight: 600; color: #333; font-size: 14px;"">Segurança</p>
                                     </td>
                                     <td align=""center"" style=""padding: 10px; width: 33%;"">
                                         <div style=""width: 60px; height: 60px; background: linear-gradient(135deg, #8E2DE2 0%, #4A00E0 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto; box-shadow: 0 5px 15px rgba(74, 0, 224, 0.3);"">
-                                            <span style=""color: white; font-size: 24px;"">⚡</span>
+                                            <span style=""color: white; font-size: 24px; margin-left: 15px; margin-top: 8px;"">⚡</span>
                                         </div>
                                         <p style=""margin-top: 10px; font-weight: 600; color: #333; font-size: 14px;"">Velocidade</p>
                                     </td>
                                     <td align=""center"" style=""padding: 10px; width: 33%;"">
                                         <div style=""width: 60px; height: 60px; background: linear-gradient(135deg, #8E2DE2 0%, #4A00E0 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto; box-shadow: 0 5px 15px rgba(74, 0, 224, 0.3);"">
-                                            <span style=""color: white; font-size: 24px;"">🌟</span>
+                                            <span style=""color: white; font-size: 24px; margin-left: 15px; margin-top: 8px;"">🌟</span>
                                         </div>
                                         <p style=""margin-top: 10px; font-weight: 600; color: #333; font-size: 14px;"">Qualidade</p>
                                     </td>

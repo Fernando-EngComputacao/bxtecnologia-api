@@ -22,7 +22,7 @@ public class CreateCustomerDTOValidator : AbstractValidator<CreateCustomerDTO>
 
         RuleFor(x => x.Level)
             .NotEmpty().WithMessage("O nível é obrigatório")
-            .Must(level => new[] { "Beginner", "Intermediate", "Advanced" }.Contains(level))
+            .Must(level => new[] { "Beginner", "Advanced" }.Contains(level))
             .WithMessage("O nível deve ser 'Beginner', 'Intermediate' ou 'Advanced'");
 
         RuleFor(x => x.Role)
