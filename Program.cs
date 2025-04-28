@@ -39,6 +39,7 @@ builder.Services.AddSingleton<IAmazonDynamoDB>(sp =>  {
 });
 builder.Services.AddSingleton<ICustomerImageService, CustomerImageService>();
 builder.Services.AddSingleton<ICustomerService, CustomerService>();
+builder.Services.AddSingleton<IEmailService, EmailService>();
 builder.Services.AddSingleton<ICustomerRepository, CustomerRepository>();
 builder.Services.AddAutoMapper(typeof(Profiles));
 

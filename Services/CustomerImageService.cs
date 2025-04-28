@@ -89,8 +89,6 @@ public class CustomerImageService : ICustomerImageService
 
     public async Task<GetObjectResponse?> GetImageAsync(Guid id, string nameImage)
     {
-        Console.WriteLine("EMAIL", _emailConfig, "");
-
         try
         {
             var getObjectRequest = new GetObjectRequest

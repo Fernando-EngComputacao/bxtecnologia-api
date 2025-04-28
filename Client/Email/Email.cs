@@ -2,7 +2,7 @@ namespace BXTecnologia.API.Client;
 
 public class Email
 {
-    private string FromEmail { get; }
-    private string FromName { get; }
-    private string AppPassword { get; }
+    public string FromEmail { get; set; }
+    public string FromName { get; set; }
+    public string AppPassword { get; set; }
 }

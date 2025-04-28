@@ -1,22 +1,29 @@
 using AutoMapper;
+using BXTecnologia.API.Client;
 using BXTecnologia.API.Models.Customer;
 using BXTecnologia.API.Models.Customer.DTO;
 using BXTecnologia.API.Repositories.Interfaces;
 using BXTecnologia.API.Services.Interfaces;
 using FluentValidation;
 using FluentValidation.Results;
+using Microsoft.Extensions.Options;
 
 namespace BXTecnologia.API.Services;
 
 public class CustomerService : ICustomerService
 {
     private readonly ICustomerRepository _customerRepository;
+    private readonly Email _emailConfig;
     private readonly IMapper _mapper;
 
-    public CustomerService(ICustomerRepository customerRepository, IMapper mapper)
+    public CustomerService(
+        ICustomerRepository customerRepository, 
+        IMapper mapper, 
+        IOptions<Email> emailOptions)
     {
         _customerRepository = customerRepository;
         _mapper = mapper;
+        _emailConfig = emailOptions.Value;
     }
     
     public async Task<bool> CreateAsync(CreateCustomerDTO customerDTO)
