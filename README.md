@@ -160,5 +160,5 @@ O projeto implementa um sistema robusto de validação e tratamento de exceçõe
 
 Desenvolvido por Fernando Furtado © 2025
 
-##### - Acesse o contênier no [Docker - clique aqui](https://hub.docker.com/repository/docker/furtadofernando/bxtecnologia-api/general)
+##### - Acesse o contênier no [Docker - clique aqui](https://hub.docker.com/r/furtadofernando/bxtecnologia-api)
 ##### - Acesse o GitHub [GitHub - clique aqui](https://github.com/Fernando-EngComputacao/bxtecnologia-api)
