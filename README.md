@@ -161,10 +161,4 @@ As imagens são armazenadas de forma segura no Amazon S3, com as seguintes carac
 
 Este projeto está licenciado sob a licença [MIT](LICENSE).
 
-## 👥 Contribuição
-
-Contribuições são bem-vindas! Sinta-se à vontade para abrir issues e pull requests.
-
----
-
-Desenvolvido por BX Tecnologia © 2025
+Desenvolvido por Fernando Furtado © 2025
