@@ -1,0 +1,6 @@
+@BXTecnologia.API_HostAddress = http://localhost:5131
+
+GET {{BXTecnologia.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Version>1.0.0</Version>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
+    <InformationalVersion>1.0.0+abcdef123</InformationalVersion>
+    <Product>BXTecnologia API</Product>
+    <Title>BXTecnologia.API</Title>
+    <UserSecretsId>7f4d9611-86f2-4c9c-89af-5550a1912882</UserSecretsId>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>.</DockerfileContext>
+  </PropertyGroup>
+
+  <ItemGroup>
+	  <PackageReference Include="Amazon.Lambda.Core" Version="2.5.1" />
+	  <PackageReference Include="Amazon.Lambda.S3Events" Version="3.1.0" />
+	  <PackageReference Include="Amazon.Lambda.Serialization.SystemTextJson" Version="2.4.4" />
+	  <PackageReference Include="AutoMapper" Version="12.0.0" />
+	  <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
+	  <PackageReference Include="FluentValidation.AspNetCore" Version="11.0.0" />
+    <PackageReference Include="AWSSDK.DynamoDBv2" Version="4.0.0-preview.13" />
+    <PackageReference Include="AWSSDK.S3" Version="4.0.0-preview.13" />
+    <PackageReference Include="FluentValidation" Version="12.0.0-preview1" />
+    <PackageReference Include="MailKit" Version="4.11.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.20.1" />
+    <PackageReference Include="SixLabors.ImageSharp" Version="3.1.8" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+    <PackageReference Include="xunit" Version="2.9.3" />
+  </ItemGroup>
+
+</Project>
