@@ -1,7 +1,7 @@
 .vs
 .appsettings.Development.json
-.bin
-.obj
-.idea
+.bin/
+.obj/
+.idea/
 
 [diff_block_end]
