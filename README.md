@@ -155,7 +155,10 @@ O projeto implementa um sistema robusto de validação e tratamento de exceçõe
    ```bash
    docker run -p 8080:80 bxtecnologia-api
    ```
-
+   
 ## Desenvolvedor
 
 Desenvolvido por Fernando Furtado © 2025
+
+##### - Acesse o contênier no [Docker - clique aqui](https://hub.docker.com/repository/docker/furtadofernando/bxtecnologia-api/general)
+##### - Acesse o GitHub [GitHub - clique aqui](https://github.com/Fernando-EngComputacao/bxtecnologia-api)
