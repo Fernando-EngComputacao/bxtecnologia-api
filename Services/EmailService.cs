@@ -1,6 +1,5 @@
 using BXTecnologia.API.Config;
 using BXTecnologia.API.Services.Interfaces;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 
 namespace BXTecnologia.API.Services;

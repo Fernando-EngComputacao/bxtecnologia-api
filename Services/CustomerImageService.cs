@@ -1,11 +1,10 @@
 using System.Net;
 using Amazon.S3;
 using Amazon.S3.Model;
-using BXTecnologia.API.Config;
+using BXTecnologia.API.Config.Interfaces;
 using BXTecnologia.API.Services.Interfaces;
 using BXTecnologia.API.Services.Validators;
 using FluentValidation;
-using Microsoft.Extensions.Options;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.Advanced;
 using SixLabors.ImageSharp.Processing;
@@ -16,21 +15,24 @@ namespace BXTecnologia.API.Services;
 public class CustomerImageService : ICustomerImageService
 {
     private readonly IAmazonS3 _s3;
-    private readonly EmailSettings _emailConfig;
-    private readonly ICustomerService _customer;
     private readonly IEmailService _emailService;
+    private readonly IEmailLayout _emailLayout;
+    private readonly ICustomerService _customer;
     private readonly CustomerImageValidator _imageValidator;
     private readonly CustomerImageUpdateValidator _imageUpdateValidator;
     private readonly CustomerImageGetValidator _imageGetValidator;
     private readonly CustomerImageDeleteValidator _imageDeleteValidator;
     private const string BucketName = "bxtecnologiabucket";
 
-    public CustomerImageService(IAmazonS3 s3, IOptions<EmailSettings> settings, ICustomerService customer, IEmailService emailService)
+    public CustomerImageService(IAmazonS3 s3, 
+        ICustomerService customer, 
+        IEmailService emailService, 
+        IEmailLayout emailLayout)
     {
         _s3 = s3;
         _customer = customer;
         _emailService = emailService;
-        _emailConfig = settings.Value;
+        _emailLayout = emailLayout;
         _imageValidator = new CustomerImageValidator();
         _imageUpdateValidator = new CustomerImageUpdateValidator();
         _imageGetValidator = new CustomerImageGetValidator();
@@ -44,7 +46,8 @@ public class CustomerImageService : ICustomerImageService
         {
             throw new ValidationException(validationResult.Errors);
         }
-
+        
+        var customer = _customer.GetAsync(id).Result;
         var timestamp = DateTime.UtcNow.ToString("yyyyMMddHHmmss"); // Gera tipo 20250426155300
         var extension = Path.GetExtension(file.FileName);
         
@@ -60,8 +63,22 @@ public class CustomerImageService : ICustomerImageService
                 ["x-amz-meta-extension"] = Path.GetExtension(file.FileName),
             }
         };
+        
 
-        return await _s3.PutObjectAsync(putObjectRequest);
+        var response =  await _s3.PutObjectAsync(putObjectRequest);
+        if (response.HttpStatusCode == HttpStatusCode.OK)
+        {
+            _emailService.SendEmailAsync(
+                customer.Email, 
+                "Cadastro de Imagem Concluído", 
+                _emailLayout.GetConfirmationEmailTemplate(
+                    customer.FullName,
+                    $"https://localhost:7194/customers/{id}/{timestamp}{extension}/image"));
+        }
+        
+        Console.WriteLine($"response {response}");
+        
+        return response;
     }
 
     public async Task<PutObjectResponse> UpdateImageAsync(Guid id, string fileName, int width, int height)
@@ -72,6 +89,7 @@ public class CustomerImageService : ICustomerImageService
             throw new ValidationException(validationResult.Errors);
         }
 
+        var customer = _customer.GetAsync(id).Result;
         var file = await GetImageAsync(id, fileName);
         if (file == null)
         {
@@ -110,7 +128,20 @@ public class CustomerImageService : ICustomerImageService
             }
         };
 
-        return await _s3.PutObjectAsync(putObjectRequest);
+        var response = await _s3.PutObjectAsync(putObjectRequest);
+    
+        if (response.HttpStatusCode == HttpStatusCode.OK)
+        {
+            _emailService.SendEmailAsync(
+                customer.Email, 
+                "Processamento de Imagem Concluído", 
+                _emailLayout.GetImageProcessingEmailTemplate(
+                    customer.FullName,
+                    1,
+                    $"https://localhost:7194/customers/{id}/{fileName}/image"));
+        }
+    
+        return response;
     }
 
 
@@ -122,9 +153,6 @@ public class CustomerImageService : ICustomerImageService
             throw new ValidationException(validationResult.Errors);
         }
 
-        var customer = _customer.GetAsync(id).Result;
-        
-
         try
         {
             var getObjectRequest = new GetObjectRequest
@@ -134,11 +162,7 @@ public class CustomerImageService : ICustomerImageService
             };
         
             var response = await _s3.GetObjectAsync(getObjectRequest);
-
-            if (response.HttpStatusCode == HttpStatusCode.OK)
-            {
-                _emailService.SendEmailAsync(customer.Email, "Teste Email", "Teste");
-            }
+            
             return response;
         }
         catch (AmazonS3Exception ex) when (ex.Message.Contains("The specified key does not exist"))

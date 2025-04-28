@@ -5,6 +5,7 @@ using Amazon.S3;
 using BXTecnologia.API.Client;
 using BXTecnologia.API.Client.AWS;
 using BXTecnologia.API.Config;
+using BXTecnologia.API.Config.Interfaces;
 using BXTecnologia.API.Profiles;
 using BXTecnologia.API.Repositories;
 using BXTecnologia.API.Repositories.Interfaces;
@@ -44,6 +45,7 @@ builder.Services.AddSingleton<IAmazonDynamoDB>(sp =>  {
 builder.Services.AddSingleton<ICustomerImageService, CustomerImageService>();
 builder.Services.AddSingleton<ICustomerService, CustomerService>();
 builder.Services.AddSingleton<IEmailService, EmailService>();
+builder.Services.AddSingleton<IEmailLayout, EmailLayout>();
 builder.Services.AddSingleton<ICustomerRepository, CustomerRepository>();
 builder.Services.AddAutoMapper(typeof(Profiles));
 
