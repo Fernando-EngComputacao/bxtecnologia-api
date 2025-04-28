@@ -62,11 +62,9 @@ builder.Services.AddScoped<IValidator<Guid>, CustomerImageDeleteValidator>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+// Habilitando Swagger em todos os ambientes
+app.UseSwagger();
+app.UseSwaggerUI();
 
 // Register exception handling middleware first in the pipeline
 app.UseMiddleware<ExceptionMiddleware>();
