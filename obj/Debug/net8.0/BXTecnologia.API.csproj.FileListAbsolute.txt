@@ -1,7 +1,5 @@
 C:\Users\carri\Workspace\BXTecnologia.API\bin\Debug\net8.0\appsettings.Development.json
 C:\Users\carri\Workspace\BXTecnologia.API\bin\Debug\net8.0\appsettings.json
-C:\Users\carri\Workspace\BXTecnologia.API\bin\Debug\net8.0\ImageOptimizer\src\ImageOptimizer\obj\ImageOptimizer.csproj.nuget.dgspec.json
-C:\Users\carri\Workspace\BXTecnologia.API\bin\Debug\net8.0\ImageOptimizer\src\ImageOptimizer\obj\project.assets.json
 C:\Users\carri\Workspace\BXTecnologia.API\bin\Debug\net8.0\BXTecnologia.API.exe
 C:\Users\carri\Workspace\BXTecnologia.API\bin\Debug\net8.0\BXTecnologia.API.deps.json
 C:\Users\carri\Workspace\BXTecnologia.API\bin\Debug\net8.0\BXTecnologia.API.runtimeconfig.json

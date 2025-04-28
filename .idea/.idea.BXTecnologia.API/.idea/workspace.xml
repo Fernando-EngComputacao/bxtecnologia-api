@@ -10,8 +10,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aca8183a-6311-483d-89d4-9556e9f344ae" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/ImageOptimizer/src/ImageOptimizer/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/ImageOptimizer/src/ImageOptimizer/obj/rider.project.model.nuget.info" afterDir="false" />
+    <list default="true" id="aca8183a-6311-483d-89d4-9556e9f344ae" name="Changes" comment="gitignore">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.BXTecnologia.API/.idea/shelf/Uncommitted_changes_before_Checkout_at_27_04_2025_20_41__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BXTecnologia.API/.idea/shelf/Uncommitted_changes_before_Checkout_at_27_04_2025_20_41__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.BXTecnologia.API/.idea/shelf/Uncommitted_changes_before_Checkout_at_27_04_2025_20_41__Changes_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BXTecnologia.API/.idea/shelf/Uncommitted_changes_before_Checkout_at_27_04_2025_20_41__Changes_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.BXTecnologia.API/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BXTecnologia.API/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BXTecnologia.API.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/BXTecnologia.API.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/CustomerImageService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/CustomerImageService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/CustomerService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/CustomerService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Interfaces/ICustomerImageService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Interfaces/ICustomerImageService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/appsettings.Development.json" beforeDir="false" afterPath="$PROJECT_DIR$/appsettings.Development.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/BXTecnologia.API.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/obj/BXTecnologia.API.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/BXTecnologia.API.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/obj/BXTecnologia.API.csproj.nuget.g.props" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0/BXTecnologia.API.MvcApplicationPartsAssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0/BXTecnologia.API.MvcApplicationPartsAssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0/BXTecnologia.API.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0/BXTecnologia.API.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0/BXTecnologia.API.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0/BXTecnologia.API.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0/BXTecnologia.API.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0/BXTecnologia.API.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0/BXTecnologia.API.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0/BXTecnologia.API.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0/BXTecnologia.API.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0/BXTecnologia.API.sourcelink.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0/ref/BXTecnologia.API.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0/ref/BXTecnologia.API.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0/refint/BXTecnologia.API.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0/refint/BXTecnologia.API.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/project.nuget.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/obj/rider.project.model.nuget.info" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -29,10 +49,27 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/runtime/087e15321bb712ef6fe8b0ba6f8bd12facf92629/src/libraries/System.Private.CoreLib/src/System/Reflection/AssemblyProductAttribute.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/2fe2a2bc3633b22939dcc1bb3384021322674b24cdf72a5cdbd58db46e7cc27/AbstractValidator.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/83b97c2e8f5a74dffd9559fe468694c66ae61cc7e59d1b48cadf2638a7e2a79/GetObjectResponse.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/9161da3da671f777cc3652d39696c23db97793e37cb97fcb4e1e87234e56322/ValidationException.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/b11f4112e5c71e5f427d32acbe18a06fe32ee7faececdafaf41fa5ce56a7a5/LanczosResampler.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d8917e46329a3df7dcff83b53b55cac4b402474ce64fff807984f7399acd5/BasicAWSCredentials.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/carri/Workspace/BXTecnologia.API/Config/EmailLayout.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/carri/Workspace/BXTecnologia.API/Config/EmailLayout.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/carri/Workspace/BXTecnologia.API/Config/EmailSettings.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/carri/Workspace/BXTecnologia.API/Config/Interfaces/IEmailLayout.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/carri/Workspace/BXTecnologia.API/Config/Interfaces/IEmailLayout.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/carri/Workspace/BXTecnologia.API/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/carri/Workspace/BXTecnologia.API/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/carri/Workspace/BXTecnologia.API/Services/CustomerImageService.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/carri/Workspace/BXTecnologia.API/Services/CustomerImageService.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/carri/Workspace/BXTecnologia.API/Services/CustomerImageService.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/carri/Workspace/BXTecnologia.API/Services/CustomerService.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/carri/Workspace/BXTecnologia.API/Services/CustomerService.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/carri/Workspace/BXTecnologia.API/Services/EmailService.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/carri/Workspace/BXTecnologia.API/Services/EmailService.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/carri/Workspace/BXTecnologia.API/Services/Interfaces/IEmailService.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/carri/Workspace/BXTecnologia.API/Services/Validators/CreateCustomerDTOValidator.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -156,6 +193,9 @@
       <workItem from="1745783206043" duration="4907000" />
       <workItem from="1745788911030" duration="1558000" />
       <workItem from="1745794127157" duration="2163000" />
+      <workItem from="1745809878054" duration="2449000" />
+      <workItem from="1745839602265" duration="709000" />
+      <workItem from="1745840477868" duration="8339000" />
     </task>
     <task id="LOCAL-00001" summary="add lambda">
       <option name="closed" value="true" />
@@ -181,7 +221,63 @@
       <option name="project" value="LOCAL" />
       <updated>1745790523879</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="melhorias para email">
+      <option name="closed" value="true" />
+      <created>1745841865503</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1745841865504</updated>
+    </task>
+    <task id="LOCAL-00005" summary="melhoria no fluxo e layout dos emails">
+      <option name="closed" value="true" />
+      <created>1745843842339</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1745843842339</updated>
+    </task>
+    <task id="LOCAL-00006" summary="email confirmacao processamento imagem">
+      <option name="closed" value="true" />
+      <created>1745844825107</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1745844825107</updated>
+    </task>
+    <task id="LOCAL-00007" summary="correcao enviar email para cadastro user, cadastro imagem e reprocessamento imagem">
+      <option name="closed" value="true" />
+      <created>1745847541085</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1745847541085</updated>
+    </task>
+    <task id="LOCAL-00008" summary="melhorias README">
+      <option name="closed" value="true" />
+      <created>1745848214844</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1745848214844</updated>
+    </task>
+    <task id="LOCAL-00009" summary="readme">
+      <option name="closed" value="true" />
+      <created>1745848313878</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1745848313878</updated>
+    </task>
+    <task id="LOCAL-00010" summary="gitignore">
+      <option name="closed" value="true" />
+      <created>1745848384084</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1745848384084</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -193,7 +289,14 @@
     <MESSAGE value="add lambda" />
     <MESSAGE value="melhorias gerais de resize e filter" />
     <MESSAGE value="teste update" />
-    <option name="LAST_COMMIT_MESSAGE" value="teste update" />
+    <MESSAGE value="melhorias para email" />
+    <MESSAGE value="melhoria no fluxo e layout dos emails" />
+    <MESSAGE value="email confirmacao processamento imagem" />
+    <MESSAGE value="correcao enviar email para cadastro user, cadastro imagem e reprocessamento imagem" />
+    <MESSAGE value="melhorias README" />
+    <MESSAGE value="readme" />
+    <MESSAGE value="gitignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="gitignore" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

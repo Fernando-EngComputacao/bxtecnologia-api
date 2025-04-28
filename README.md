@@ -157,6 +157,6 @@ As imagens são armazenadas de forma segura no Amazon S3, com as seguintes carac
    docker run -p 8080:80 bxtecnologia-api
    ```
 
-## 📄 Desenvolvedor
+## Desenvolvedor
 
 Desenvolvido por Fernando Furtado © 2025

@@ -80,7 +80,7 @@ public class CustomerService : ICustomerService
     public async Task<IEnumerable<ReadCustomerDTO?>> GetAllAsync()
     {
         var customerDtos = await _customerRepository.GetAllAsync();
-        return customerDtos.Select(x => x);
+        return customerDtos.Select(x => x).OrderBy(x => x.FullName);
     }
 
     public async Task<bool> UpdateAsync(UpdateCustomerDTO customerDTO, DateTime requestStarted)

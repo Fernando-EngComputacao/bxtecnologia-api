@@ -9,7 +9,7 @@ public interface ICustomerImageService
     Task<PutObjectResponse> UpdateImageAsync(Guid id, string fileName, int width, int height);
     Task<GetObjectResponse?> GetImageAsync(Guid id, string nameImage);
 
-    Task<List<GetObjectResponse?>> GetAllImagesByCustomerAsync(Guid id);
+    Task<List<string?>> GetAllImagesByCustomerAsync(Guid id);
 
     Task<DeleteObjectResponse> DeleteImageAsync(Guid id);
 }

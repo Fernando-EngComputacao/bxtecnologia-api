@@ -38,4 +38,9 @@
     <Folder Include="Services\Validators\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="ImageOptimizer\src\ImageOptimizer\obj\ImageOptimizer.csproj.nuget.dgspec.json" />
+    <_ContentIncludedByDefault Remove="ImageOptimizer\src\ImageOptimizer\obj\project.assets.json" />
+  </ItemGroup>
+
 </Project>

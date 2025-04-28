@@ -144,8 +144,7 @@ public class CustomerImageService : ICustomerImageService
     
         return response;
     }
-
-
+    
     public async Task<GetObjectResponse?> GetImageAsync(Guid id, string nameImage)
     {
         var validationResult = await _imageGetValidator.ValidateAsync((id, nameImage));
@@ -172,7 +171,7 @@ public class CustomerImageService : ICustomerImageService
         }
     }
     
-    public async Task<List<GetObjectResponse?>> GetAllImagesByCustomerAsync(Guid id)
+    public async Task<List<string?>> GetAllImagesByCustomerAsync(Guid id)
     {
         var listRequest = new ListObjectsV2Request
         {
@@ -182,26 +181,14 @@ public class CustomerImageService : ICustomerImageService
 
         var listResponse = await _s3.ListObjectsV2Async(listRequest);
 
-        var responses = new List<GetObjectResponse?>();
+        // Pega apenas os nomes dos arquivos (Keys) da resposta
+        var imageNames = listResponse.S3Objects
+            .Select(obj => obj.Key.Split("/")[2])
+            .ToList();
 
-        foreach (var s3Object in listResponse.S3Objects)
-        {
-            // Ignora "pastas" vazias que o S3 pode listar (caso queira ser mais seguro)
-            if (string.IsNullOrEmpty(s3Object.Key) || s3Object.Size == 0)
-                continue;
-
-            var getRequest = new GetObjectRequest
-            {
-                BucketName = BucketName,
-                Key = s3Object.Key
-            };
-
-            var getResponse = await _s3.GetObjectAsync(getRequest);
-            responses.Add(getResponse);
-        }
-
-        return responses ?? null;
+        return imageNames;
     }
+
 
 
 
