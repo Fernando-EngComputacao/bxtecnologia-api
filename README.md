@@ -10,7 +10,8 @@ BXTecnologia.API é uma API REST desenvolvida em .NET 8 que oferece funcionalida
 
 - **.NET 8**: Framework moderno para desenvolvimento de aplicações
 - **ASP.NET Core**: Framework para desenvolvimento de APIs RESTful
-- **AWS S3**: Serviço de armazenamento de objetos da Amazon para imagens de perfil
+- **AWS S3**: Serviço de armazenamento de objetos da Amazon armazenar as imagens dos usuários
+- **AWS DynamoDB**: Banco de dados NoSQL para armazenamento de dados dos clientes
 - **MailKit**: Biblioteca para envio de e-mails
 - **AutoMapper**: Mapeamento entre objetos
 - **FluentValidation**: Validação de modelos
@@ -20,12 +21,10 @@ BXTecnologia.API é uma API REST desenvolvida em .NET 8 que oferece funcionalida
 
 ## 🏗️ Arquitetura
 
-O projeto segue uma arquitetura em camadas:
+O projeto segue uma arquitetura limpa com separação clara de responsabilidades:
 
-- **Controllers**: Endpoints da API REST
-- **Services**: Lógica de negócios
-- **Models**: Modelos de dados e DTOs
-- **Config**: Configurações da aplicação
+- **Core**: Contém componentes centrais e reutilizáveis
+- **src**: Contém a implementação específica da aplicação
 
 ## 🔧 Funcionalidades Principais
 
@@ -41,33 +40,43 @@ O projeto segue uma arquitetura em camadas:
 - Visualização de imagens
 - Listagem de todas as imagens de um cliente
 - Exclusão de imagens
+- Limitação de uploads para usuários do plano Beginner (5 imagens por dia)
 
-### Sistema de E-mails
-- Envio de e-mails de confirmação de cadastro
-- Envio de e-mails de confirmação de processamento de imagens
-- Envio de e-mails de confirmação de cadastro de imagens
-- Templates de e-mail personalizados com design moderno e responsivo
+### Sistema de Validação
+- Tratamento padronizado de exceções
+- Validação de entradas com FluentValidation
+- Respostas de erro consistentes em formato JSON
 
 ## 📦 Estrutura do Projeto
 
 ```
 BXTecnologia.API/
-├── Config/                  # Configurações da aplicação
-│   ├── EmailLayout.cs       # Templates de e-mail
-│   ├── EmailSettings.cs     # Configurações de e-mail
-│   └── Interfaces/          # Interfaces para configurações
-├── Controllers/             # Controladores da API
-│   ├── CustomerController.cs       # Endpoints para clientes
-│   └── CustomerImageController.cs  # Endpoints para imagens
-├── Models/                  # Modelos de dados
-│   └── Customer/            # Modelos relacionados a clientes
-│       └── DTO/             # Objetos de transferência de dados
-├── Services/                # Serviços da aplicação
-│   ├── CustomerService.cs   # Serviço de clientes
-│   ├── EmailService.cs      # Serviço de e-mails
-│   ├── CustomerImageService.cs  # Serviço de imagens
-│   └── Interfaces/          # Interfaces para serviços
-└── Program.cs               # Configuração da aplicação
+├── Core/                     # Componentes centrais reutilizáveis
+│   ├── Config/               # Configurações da aplicação
+│   │   ├── Interfaces/       # Interfaces para configurações
+│   │   └── AwsConfig.cs      # Configurações da AWS
+│   ├── Profiles/             # Perfis de AutoMapper
+│   ├── Utils/                # Utilitários e helpers
+│   └── Validation/           # Sistema de validação e tratamento de exceções
+│       ├── ApiException.cs   # Exceção personalizada para a API
+│       └── ExceptionMiddleware.cs # Middleware para tratamento de exceções
+├── src/                      # Código fonte principal da aplicação
+│   ├── Controllers/          # Controladores da API
+│   │   ├── CustomerController.cs      # Endpoints para clientes
+│   │   └── CustomerImageController.cs # Endpoints para imagens
+│   ├── Models/               # Modelos de dados
+│   │   └── Customer/         # Modelos relacionados a clientes
+│   │       └── DTO/          # Objetos de transferência de dados
+│   ├── Repositories/         # Acesso a dados
+│   │   ├── Interfaces/       # Interfaces para repositórios
+│   │   └── CustomerRepository.cs # Implementação do repositório de clientes
+│   └── Services/             # Serviços da aplicação
+│       ├── Interfaces/       # Interfaces para serviços
+│       ├── Validators/       # Validadores de FluentValidation
+│       ├── CustomerService.cs    # Serviço de clientes
+│       ├── EmailService.cs       # Serviço de e-mails
+│       └── CustomerImageService.cs # Serviço de imagens
+└── Program.cs                # Configuração da aplicação
 ```
 
 ## 📝 Endpoints da API
@@ -87,39 +96,29 @@ BXTecnologia.API/
 - `GET /customers/{id}/image` - Listar todas as imagens de um cliente
 - `DELETE /customers/{id}/image` - Excluir imagem de perfil
 
-## 📧 Sistema de E-mails
-
-O sistema de e-mails utiliza templates HTML responsivos com design moderno e futurista. Existem três tipos de e-mails:
-
-1. **E-mail de Confirmação de Cadastro de Usuário**
-   - Enviado quando um novo cliente é cadastrado
-   - Inclui informações sobre o nível do usuário
-   - Design com ícones e elementos visuais modernos
-
-2. **E-mail de Processamento de Imagens**
-   - Enviado após o processamento de imagens
-   - Mostra a quantidade de imagens processadas
-   - Inclui botão para visualizar as imagens (opcional)
-
-3. **E-mail de Confirmação de Cadastro de Imagem**
-   - Enviado quando uma nova imagem é cadastrada
-   - Mostra o nome da imagem cadastrada
-   - Inclui botão para visualizar a imagem (opcional)
-
 ## 🔐 Armazenamento de Imagens
 
 As imagens são armazenadas de forma segura no Amazon S3, com as seguintes características:
 
-- Bucket: `bxtechbucket`
+- Bucket: `bxtecnologiabucket`
 - Suporte para identificadores não-GUID (como "2-2ke")
 - Processamento de imagens para otimização
+- Limitação de uploads baseada no nível do usuário
+
+## 🛡️ Sistema de Validação e Tratamento de Exceções
+
+O projeto implementa um sistema robusto de validação e tratamento de exceções:
+
+- **ApiException**: Exceção personalizada que inclui código de status HTTP e detalhes do erro
+- **ExceptionMiddleware**: Middleware que captura exceções e retorna respostas de erro padronizadas
+- **Validadores**: Implementados com FluentValidation para validar entradas
 
 ## 🚀 Como Executar
 
 ### Pré-requisitos
 
 - .NET 8 SDK
-- Conta AWS com acesso ao S3
+- Conta AWS com acesso ao S3 e DynamoDB
 - Conta de e-mail para envio de notificações
 
 ### Configuração

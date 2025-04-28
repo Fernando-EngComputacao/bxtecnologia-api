@@ -10,20 +10,34 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aca8183a-6311-483d-89d4-9556e9f344ae" name="Changes" comment="melhorias na busca das imagens do usuario">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.BXTecnologia.API/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BXTecnologia.API/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/AWS/AwsConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Client/AWS/AwsConfig.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Repositories/CustomerRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Repositories/CustomerRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/CustomerImageService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/CustomerImageService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/CustomerService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/CustomerService.cs" afterDir="false" />
+    <list default="true" id="aca8183a-6311-483d-89d4-9556e9f344ae" name="Changes" comment="aprimoramento com variaveis global para configurar AWS S3 e DynamoDB">
+      <change beforePath="$PROJECT_DIR$/BXTecnologia.API.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/BXTecnologia.API.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/AWS/AwsConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Config/AwsConfig.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Config/EmailLayout.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Config/EmailLayout.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Config/EmailSettings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Config/EmailSettings.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Config/Interfaces/IEmailLayout.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Config/Interfaces/IEmailLayout.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/CustomerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/CustomerController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/CustomerImageController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/CustomerImageController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Customer/Customer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Customer/Customer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Customer/DTO/CreateCustomerDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Customer/DTO/CreateCustomerDTO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Customer/DTO/ReadCustomerDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Customer/DTO/ReadCustomerDTO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Customer/DTO/UpdateCustomerDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Customer/DTO/UpdateCustomerDTO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Profiles/Profiles.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Profiles/Profiles.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Repositories/CustomerRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repositories/CustomerRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Repositories/Interfaces/ICustomerRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repositories/Interfaces/ICustomerRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/CustomerImageService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/CustomerImageService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/CustomerService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/CustomerService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/EmailService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/EmailService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Interfaces/ICustomerImageService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Interfaces/ICustomerImageService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Interfaces/ICustomerService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Interfaces/ICustomerService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Interfaces/IEmailService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Interfaces/IEmailService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Validators/CreateCustomerDTOValidator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Validators/CreateCustomerDTOValidator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Validators/CustomerImageValidator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Validators/CustomerImageValidator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/Validators/UpdateCustomerDTOValidator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Validators/UpdateCustomerDTOValidator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Utils/GuidToStringConverter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Utils/GuidToStringConverter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Validation/CustomerRequestValidator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Validation/CustomerRequestValidator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Validation/ValidationExceptionMiddleware.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Validation/ValidationExceptionMiddleware.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/appsettings.Development.json" beforeDir="false" afterPath="$PROJECT_DIR$/appsettings.Development.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0/BXTecnologia.API.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0/BXTecnologia.API.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0/BXTecnologia.API.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0/BXTecnologia.API.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0/BXTecnologia.API.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0/BXTecnologia.API.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0/BXTecnologia.API.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0/BXTecnologia.API.sourcelink.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0/ref/BXTecnologia.API.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0/ref/BXTecnologia.API.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0/refint/BXTecnologia.API.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0/refint/BXTecnologia.API.dll" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -186,7 +200,7 @@
       <workItem from="1745794127157" duration="2163000" />
       <workItem from="1745809878054" duration="2449000" />
       <workItem from="1745839602265" duration="709000" />
-      <workItem from="1745840477868" duration="12731000" />
+      <workItem from="1745840477868" duration="13096000" />
     </task>
     <task id="LOCAL-00001" summary="add lambda">
       <option name="closed" value="true" />
@@ -276,7 +290,15 @@
       <option name="project" value="LOCAL" />
       <updated>1745849140422</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="aprimoramento com variaveis global para configurar AWS S3 e DynamoDB">
+      <option name="closed" value="true" />
+      <created>1745853662112</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1745853662112</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -296,6 +318,7 @@
     <MESSAGE value="readme" />
     <MESSAGE value="gitignore" />
     <MESSAGE value="melhorias na busca das imagens do usuario" />
-    <option name="LAST_COMMIT_MESSAGE" value="melhorias na busca das imagens do usuario" />
+    <MESSAGE value="aprimoramento com variaveis global para configurar AWS S3 e DynamoDB" />
+    <option name="LAST_COMMIT_MESSAGE" value="aprimoramento com variaveis global para configurar AWS S3 e DynamoDB" />
   </component>
 </project>
