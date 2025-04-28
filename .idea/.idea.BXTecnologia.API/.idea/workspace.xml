@@ -10,29 +10,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aca8183a-6311-483d-89d4-9556e9f344ae" name="Changes" comment="gitignore">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.BXTecnologia.API/.idea/shelf/Uncommitted_changes_before_Checkout_at_27_04_2025_20_41__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BXTecnologia.API/.idea/shelf/Uncommitted_changes_before_Checkout_at_27_04_2025_20_41__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.BXTecnologia.API/.idea/shelf/Uncommitted_changes_before_Checkout_at_27_04_2025_20_41__Changes_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BXTecnologia.API/.idea/shelf/Uncommitted_changes_before_Checkout_at_27_04_2025_20_41__Changes_1.xml" afterDir="false" />
+    <list default="true" id="aca8183a-6311-483d-89d4-9556e9f344ae" name="Changes" comment="melhorias na busca das imagens do usuario">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BXTecnologia.API/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BXTecnologia.API/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BXTecnologia.API.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/BXTecnologia.API.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/AWS/AwsConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Client/AWS/AwsConfig.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Repositories/CustomerRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Repositories/CustomerRepository.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Services/CustomerImageService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/CustomerImageService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Services/CustomerService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/CustomerService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/Interfaces/ICustomerImageService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Interfaces/ICustomerImageService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/appsettings.Development.json" beforeDir="false" afterPath="$PROJECT_DIR$/appsettings.Development.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/BXTecnologia.API.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/obj/BXTecnologia.API.csproj.nuget.dgspec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/BXTecnologia.API.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/obj/BXTecnologia.API.csproj.nuget.g.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0/BXTecnologia.API.MvcApplicationPartsAssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0/BXTecnologia.API.MvcApplicationPartsAssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0/BXTecnologia.API.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0/BXTecnologia.API.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0/BXTecnologia.API.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0/BXTecnologia.API.csproj.FileListAbsolute.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0/BXTecnologia.API.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0/BXTecnologia.API.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0/BXTecnologia.API.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0/BXTecnologia.API.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0/BXTecnologia.API.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0/BXTecnologia.API.sourcelink.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0/ref/BXTecnologia.API.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0/ref/BXTecnologia.API.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0/refint/BXTecnologia.API.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0/refint/BXTecnologia.API.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/project.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/obj/rider.project.model.nuget.info" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,31 +77,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;.NET Launch Settings Profile.BXTecnologia.API: IIS Express.executor&quot;: &quot;Run&quot;,
-    &quot;.NET Launch Settings Profile.BXTecnologia.API: http.executor&quot;: &quot;Run&quot;,
-    &quot;.NET Launch Settings Profile.BXTecnologia.API: https.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.Dockerfile.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;advanced.settings&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    ".NET Launch Settings Profile.BXTecnologia.API: IIS Express.executor": "Run",
+    ".NET Launch Settings Profile.BXTecnologia.API: http.executor": "Run",
+    ".NET Launch Settings Profile.BXTecnologia.API: https.executor": "Run",
+    "Docker.Dockerfile.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "dev",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "advanced.settings",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;rider.external.source.directories&quot;: [
-      &quot;C:\\Users\\carri\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache&quot;,
-      &quot;C:\\Users\\carri\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache&quot;,
-      &quot;C:\\Users\\carri\\AppData\\Local\\Symbols\\src&quot;
+  "keyToStringList": {
+    "rider.external.source.directories": [
+      "C:\\Users\\carri\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache",
+      "C:\\Users\\carri\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache",
+      "C:\\Users\\carri\\AppData\\Local\\Symbols\\src"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected=".NET Launch Settings Profile.BXTecnologia.API: https">
     <configuration name="BXTecnologia.API: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/BXTecnologia.API.csproj" />
@@ -195,7 +186,7 @@
       <workItem from="1745794127157" duration="2163000" />
       <workItem from="1745809878054" duration="2449000" />
       <workItem from="1745839602265" duration="709000" />
-      <workItem from="1745840477868" duration="8339000" />
+      <workItem from="1745840477868" duration="12731000" />
     </task>
     <task id="LOCAL-00001" summary="add lambda">
       <option name="closed" value="true" />
@@ -277,7 +268,15 @@
       <option name="project" value="LOCAL" />
       <updated>1745848384084</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="melhorias na busca das imagens do usuario">
+      <option name="closed" value="true" />
+      <created>1745849140422</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1745849140422</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -296,25 +295,7 @@
     <MESSAGE value="melhorias README" />
     <MESSAGE value="readme" />
     <MESSAGE value="gitignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="gitignore" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Repositories/CustomerRepository.cs</url>
-          <line>28</line>
-          <properties documentPath="C:\Users\carri\Workspace\BXTecnologia.API\Repositories\CustomerRepository.cs" initialLine="27" containingFunctionPresentation="Method 'CreateAsync'">
-            <startOffsets>
-              <option value="846" />
-            </startOffsets>
-            <endOffsets>
-              <option value="874" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="melhorias na busca das imagens do usuario" />
+    <option name="LAST_COMMIT_MESSAGE" value="melhorias na busca das imagens do usuario" />
   </component>
 </project>

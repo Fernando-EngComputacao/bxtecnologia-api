@@ -1,6 +1,4 @@
 using AutoMapper;
-using BXTecnologia.API.Client;
-using BXTecnologia.API.Config;
 using BXTecnologia.API.Config.Interfaces;
 using BXTecnologia.API.Models.Customer;
 using BXTecnologia.API.Models.Customer.DTO;
@@ -9,21 +7,20 @@ using BXTecnologia.API.Services.Interfaces;
 using BXTecnologia.API.Services.Validators;
 using FluentValidation;
 using FluentValidation.Results;
-using Microsoft.Extensions.Options;
 
 namespace BXTecnologia.API.Services;
 
 public class CustomerService : ICustomerService
 {
-    private readonly ICustomerRepository _customerRepository;
-    private readonly IEmailService _emailService;
-    private readonly IEmailLayout _emailLayout;
     private readonly IMapper _mapper;
+    private readonly IEmailLayout _emailLayout;
+    private readonly IEmailService _emailService;
+    private readonly ICustomerRepository _customerRepository;
     private readonly CreateCustomerDTOValidator _createValidator;
     private readonly UpdateCustomerDTOValidator _updateValidator;
 
     public CustomerService(
-        ICustomerRepository customerRepository, 
+        ICustomerRepository customerRepository,
         IMapper mapper, IEmailService emailService, IEmailLayout emailLayout)
     {
         _mapper = mapper;
@@ -33,7 +30,7 @@ public class CustomerService : ICustomerService
         _createValidator = new CreateCustomerDTOValidator();
         _updateValidator = new UpdateCustomerDTOValidator();
     }
-    
+
     public async Task<bool> CreateAsync(CreateCustomerDTO customerDTO)
     {
         var validationResult = await _createValidator.ValidateAsync(customerDTO);
@@ -44,19 +41,19 @@ public class CustomerService : ICustomerService
 
         var customer = _mapper.Map<Customer>(customerDTO);
         customer.UpdatedAt = DateTime.UtcNow;
-        
+
         var existingUser = await _customerRepository.GetAsync(customer.Id);
         if (existingUser is not null)
         {
             var message = $"A user with id {customer.Id} already exists";
             throw new ValidationException(message);
         }
-        
+
         var response = await _customerRepository.CreateAsync(customerDTO);
-        var mensageLevel = customer.Level.StartsWith("Beginner") ?
-            "usuário nível Básico, com limite diário de upload de 5 imagens" :
-            "usário nível Prêmium, com upload ilimitado de imagens";
-        
+        var mensageLevel = customer.Level.StartsWith("Beginner")
+            ? "usuário nível Básico, com limite diário de upload de 5 imagens"
+            : "usário nível Prêmium, com upload ilimitado de imagens";
+
         if (response)
         {
             _emailService.SendEmailAsync(customer.Email,
@@ -67,7 +64,7 @@ public class CustomerService : ICustomerService
                 )
             );
         }
-        
+
         return response;
     }
 
@@ -101,7 +98,7 @@ public class CustomerService : ICustomerService
 
     private static ValidationFailure[] GenerateValidationError(string paramName, string message)
     {
-        return new []
+        return new[]
         {
             new ValidationFailure(paramName, message)
         };

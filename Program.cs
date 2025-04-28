@@ -12,6 +12,7 @@ using BXTecnologia.API.Repositories.Interfaces;
 using BXTecnologia.API.Services;
 using BXTecnologia.API.Services.Interfaces;
 using BXTecnologia.API.Services.Validators;
+using BXTecnologia.API.Validation;
 using FluentValidation;
 using BXTecnologia.API.Models.Customer.DTO;
 
@@ -26,6 +27,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
+builder.Services.Configure<AwsConfig>(builder.Configuration.GetSection("AWS"));
 builder.Services.AddSingleton<IAmazonS3>(sp => {
     var credentials = new BasicAWSCredentials(awsOptions.AccessKey, awsOptions.SecretKey, awsOptions.AccountId);
     var config = new AmazonS3Config()
@@ -65,6 +67,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+// Register exception handling middleware first in the pipeline
+app.UseMiddleware<ExceptionMiddleware>();
 
 app.UseHttpsRedirection();
 

@@ -4,21 +4,27 @@ using Amazon.DynamoDBv2;
 using Amazon.DynamoDBv2.DocumentModel;
 using Amazon.DynamoDBv2.Model;
 using AutoMapper;
+using BXTecnologia.API.Client.AWS;
 using BXTecnologia.API.Models.Customer;
 using BXTecnologia.API.Models.Customer.DTO;
 using BXTecnologia.API.Repositories.Interfaces;
 using BXTecnologia.API.Utils;
+using Microsoft.Extensions.Options;
 
 namespace BXTecnologia.API.Repositories;
 
 public class CustomerRepository : ICustomerRepository
 {
     private readonly IAmazonDynamoDB _dynamoDb;
-    private readonly string _tableName = "customers";
+    private readonly AwsConfig _awsConfig;
     private readonly IMapper _mapper;
     
-    public CustomerRepository(IAmazonDynamoDB dynamoDb, IMapper mapper)
+    public CustomerRepository(
+        IAmazonDynamoDB dynamoDb, 
+        IMapper mapper, 
+        IOptions<AwsConfig> awsConfig)
     {
+        _awsConfig = awsConfig.Value;
         _dynamoDb = dynamoDb;
         _mapper = mapper;
     }
@@ -26,7 +32,6 @@ public class CustomerRepository : ICustomerRepository
     public async Task<bool> CreateAsync(CreateCustomerDTO customerDTO)
     {
         var customer = _mapper.Map<Customer>(customerDTO);
-        Console.WriteLine(customer);
         customer.UpdatedAt = DateTime.UtcNow;
         
         var options = new JsonSerializerOptions
@@ -40,7 +45,7 @@ public class CustomerRepository : ICustomerRepository
 
         var createItemRequest = new PutItemRequest()
         {
-            TableName = _tableName,
+            TableName = _awsConfig.DynamoDB,
             Item = itemAsAttributes
         };
 
@@ -60,7 +65,7 @@ public class CustomerRepository : ICustomerRepository
     {
         var request = new GetItemRequest
         {
-            TableName = _tableName,
+            TableName = _awsConfig.DynamoDB,
             Key = new Dictionary<string, AttributeValue>
         {
             { "Id", new AttributeValue { S = id.ToString() } }
@@ -81,7 +86,7 @@ public class CustomerRepository : ICustomerRepository
     {
         var scanRequest = new ScanRequest
         {
-            TableName = _tableName
+            TableName = _awsConfig.DynamoDB
         };
         var response = await _dynamoDb.ScanAsync(scanRequest);
         return response.Items
@@ -102,7 +107,7 @@ public class CustomerRepository : ICustomerRepository
 
         var updateItemRequest = new PutItemRequest
         {
-            TableName = _tableName,
+            TableName = _awsConfig.DynamoDB,
             Item = itemAsAttributes,
             ConditionExpression = "UpdatedAt < :requestStarted",
             ExpressionAttributeValues = new Dictionary<string, AttributeValue>
@@ -119,7 +124,7 @@ public class CustomerRepository : ICustomerRepository
     {
         var deleteItemRequest = new DeleteItemRequest
         {
-            TableName = _tableName,
+            TableName = _awsConfig.DynamoDB,
             Key = new Dictionary<string, AttributeValue>
             {
                 { "Id", new AttributeValue { S = id.ToString() } },
@@ -134,7 +139,7 @@ public class CustomerRepository : ICustomerRepository
     {
         var request = new GetItemRequest
         {
-            TableName = _tableName,
+            TableName = _awsConfig.DynamoDB,
             Key = new Dictionary<string, AttributeValue>
             {
                 { "Id", new AttributeValue { S = id } }
